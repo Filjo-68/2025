@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Температурен анализ на козунак</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f8f4ef;
+      padding: 2rem;
+      color: #3f342d;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    canvas {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .notes {
+      margin-top: 2rem;
+      font-size: 0.95rem;
+      background: #fff5e9;
+      padding: 1rem;
+      border-left: 4px solid #e6b96b;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Температурен анализ на козунак</h1>
+    <canvas id="tempChart" height="350"></canvas>
+    <div class="notes">
+      <strong>Забележка:</strong> Оптималната вътрешна температура за козунак е 92–94°C. <br>
+      <ul>
+        <li><span style="color:#e57373"><strong>&lt; 90°C:</strong> недопечен, влажна и нестабилна структура.</span></li>
+        <li><span style="color:#81c784"><strong>92–94°C:</strong> идеален баланс – конците се оформят, остава сочен.</span></li>
+        <li><span style="color:#ffb74d"><strong>&gt; 95°C:</strong> изсушаване и втвърдяване на сърцевината.</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    const ctx = document.getElementById('tempChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['80°C', '85°C', '88°C', '90°C', '92°C', '94°C', '96°C'],
+        datasets: [
+          {
+            label: 'Качество на структурата (0-10)',
+            data: [2, 4, 6, 8, 10, 10, 9],
+            backgroundColor: 'rgba(255, 206, 86, 0.2)',
+            borderColor: 'rgba(255, 159, 64, 1)',
+            borderWidth: 2,
+            fill: true,
+            pointRadius: 5,
+            pointHoverRadius: 7,
+            tension: 0.3
+          },
+          {
+            label: 'Остатъчна влажност (%)',
+            data: [40, 38, 35, 33, 30, 28, 24],
+            yAxisID: 'y1',
+            borderColor: '#42a5f5',
+            backgroundColor: 'rgba(66, 165, 245, 0.1)',
+            tension: 0.3,
+            pointRadius: 5,
+            pointHoverRadius: 6
+          }
+        ]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 10,
+            title: {
+              display: true,
+              text: 'Оценка на структурата'
+            }
+          },
+          y1: {
+            position: 'right',
+            beginAtZero: true,
+            max: 45,
+            grid: {
+              drawOnChartArea: false
+            },
+            title: {
+              display: true,
+              text: 'Остатъчна влажност (%)'
+            }
+          },
+          x: {
+            title: {
+              display: true,
+              text: 'Вътрешна температура на печене'
+            }
+          }
+        },
+        plugins: {
+          legend: {
+            display: true
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
