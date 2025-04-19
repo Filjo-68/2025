@@ -223,30 +223,40 @@
 
   
 <a href="https://filjo-68.github.io/2025/kozunak-termometer.html" 
-   class="floating-link" 
+   class="floating-icon" 
    target="_blank" 
-   title="Виж термометъра за козунак">Термометър</a>
+   title="Отвори термометъра">
+  <svg xmlns="http://www.w3.org/2000/svg" height="28" viewBox="0 0 24 24" width="28" fill="white">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17 5a5 5 0 00-10 0v7.17a3 3 0 00-1 2.33 3 3 0 006 0c0-.89-.39-1.69-1-2.24V5a3 3 0 116 0v7a1 1 0 102 0V5z"/>
+  </svg>
+</a>
 
 <style>
-.floating-link {
+.floating-icon {
   position: fixed;
   bottom: 90px;
   right: 20px;
+  width: 48px;
+  height: 48px;
   background: #eeb76b;
-  color: white;
-  padding: 0.8em 1.2em;
-  font-weight: bold;
-  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   text-decoration: none;
   z-index: 999;
   transition: background 0.3s;
 }
-.floating-link:hover {
+.floating-icon:hover {
   background: #d69d50;
 }
+.floating-icon svg {
+  fill: white;
+}
 @media print {
-  .floating-link {
+  .floating-icon {
     display: none;
   }
 }
